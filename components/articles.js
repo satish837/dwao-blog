@@ -7,9 +7,8 @@ const Articles = ({ articles }) => {
   const rightArticles = articles.slice(leftArticlesCount, articles.length);
 
   return (
-    <div>
-      <div className="uk-child-width-1-2@s" data-uk-grid="true">
-        <div>
+    <div className="flex">
+      <div className="grid grid-rows-1 grid-flow-col gap-10" data-uk-grid="true">
           {leftArticles.map((article, i) => {
             return (
               <Card
@@ -18,7 +17,6 @@ const Articles = ({ articles }) => {
               />
             );
           })}
-        </div>
         <div>
           <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
             {rightArticles.map((article, i) => {

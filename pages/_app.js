@@ -1,7 +1,9 @@
+import { createContext } from "react";
 import App from "next/app";
 import Head from "next/head";
-import "../assets/css/style.css";
-import { createContext } from "react";
+import "../assets/css/global.css";
+import "../assets/css/normalize.css";
+import "../assets/css/styles.css";
 import { fetchAPI } from "../lib/api";
 import { getStrapiMedia } from "../lib/media";
 

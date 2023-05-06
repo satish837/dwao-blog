@@ -1,9 +1,15 @@
-import Nav from "./nav";
+import Footer from "./footer";
+import Header from "./header";
 
 const Layout = ({ children, categories, seo }) => (
   <>
-    <Nav categories={categories} />
-    {children}
+    <Header categories={categories} />
+    <div className="container" style={{paddingTop: '3rem'}}>
+      <div className="mt-24 mb-12">
+        {children}
+      </div>
+    </div>
+    <Footer />
   </>
 );
 
