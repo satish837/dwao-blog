@@ -47,8 +47,8 @@ export default function Footer() {
             </ul>
             <ul>
               <li><a target="_blank" href="partners/"><span>Partners</span></a></li>
-              <li><a target="_blank" href="https://solutionpartners.adobe.com/s/directory/detail/digital+web+analytics+and+optimization" target="_blank">Adobe</a></li>
-              <li><a target="_blank" href="https://marketingplatform.google.com/about/partners/company/5152925231874048/gacp/5629499534213120/service/5724160613416960" target="_blank">Google</a></li>
+              <li><a target="_blank" href="https://solutionpartners.adobe.com/s/directory/detail/digital+web+analytics+and+optimization">Adobe</a></li>
+              <li><a target="_blank" href="https://marketingplatform.google.com/about/partners/company/5152925231874048/gacp/5629499534213120/service/5724160613416960">Google</a></li>
               <li><a target="_blank" href="https://mixpanel.com/partners/solution-partner-dwao/">Mixpanel</a></li>
               <li><a target="_blank" href="https://clevertap.com/channel-partners/">Clevertap</a></li>
             </ul>
