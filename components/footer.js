@@ -8,9 +8,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer-wrap">
           <div className="left">
-            <div className="logo"><Link href="/">DDWAO</Link></div>
+            <div className="logo"><Link href="/">DWAO</Link></div>
             <div className="office-address">4th Floor, 250, Phase IV, Udyog Vihar, Sector 18, Gurugram, Haryana 122015</div>
-            <div className="subscribe">
+            {/* <div className="subscribe">
               <h6>Stay current with our latest insights <br />and resources</h6>
               <div className="formContainer">
                 <form action="">
@@ -20,7 +20,7 @@ export default function Footer() {
                   </fieldset>
                 </form>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="right">
             <ul>

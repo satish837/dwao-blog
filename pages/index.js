@@ -8,14 +8,12 @@ const Home = ({ articles, categories, homepage }) => {
   return (
     <Layout categories={categories}>
       <Seo seo={homepage.attributes.seo} />
-        <div className="flex">
-          <Articles articles={articles} />
-        </div>
+      <Articles articles={articles} />  
     </Layout>
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Run API calls in parallel
   const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
     fetchAPI("/articles", { populate: ["image", "category"] }),
@@ -34,7 +32,6 @@ export async function getStaticProps() {
       categories: categoriesRes.data,
       homepage: homepageRes.data,
     },
-    revalidate: 1,
   };
 }
 
