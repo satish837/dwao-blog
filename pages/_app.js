@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import NextNProgress from 'nextjs-progressbar';
 import App from "next/app";
 import Head from "next/head";
 import "../assets/css/global.css";
@@ -24,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
       <GlobalContext.Provider value={global.attributes}>
         <Component {...pageProps} />
       </GlobalContext.Provider>
+      <NextNProgress color="#4969bb" height={5} />
     </>
   );
 };
