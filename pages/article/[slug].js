@@ -43,10 +43,7 @@ const Article = ({ article, categories }) => {
                   src={getStrapiMedia(
                     article.attributes.author.data.attributes.picture
                   )}
-                  alt={
-                    article.attributes.author.data.attributes.picture.data
-                      .attributes.alternativeText
-                  }
+                  alt="Author"
                   style={{
                     position: "static",
                     borderRadius: "20%",
