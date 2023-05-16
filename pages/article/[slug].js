@@ -1,11 +1,9 @@
 import Moment from "react-moment";
-import ReactMarkdown from "react-markdown";
-
 import Seo from "../../components/seo";
 import Layout from "../../components/layout";
-
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
+import ParseStaticContent from "../../components/parse-html";
 
 const Article = ({ article, categories }) => {
   const imageUrl = getStrapiMedia(article.attributes.image);
@@ -17,23 +15,23 @@ const Article = ({ article, categories }) => {
     article: true,
   };
 
+  console.log(imageUrl);
+
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
-      <div
-        id="banner"
-        className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-        data-src={imageUrl}
-        data-srcset={imageUrl}
-        data-uk-img
-      >
-        <h1>{article.attributes.title}</h1>
-      </div>
+      <section className="relative py-48 px-4 mb-10">
+        <div className="absolute inset-0 h-auto z-10">
+          {
+             // eslint-disable-next-line @next/next/no-img-element
+             <img src={imageUrl} alt="" className="h-full w-full object-fit-cover"/>
+          }
+        </div>
+      </section>
       <div className="uk-section">
         <div className="uk-container uk-container-small">
-          <ReactMarkdown>
-            {article.attributes.content}
-          </ReactMarkdown>
+          <h1 className="text-black">{article.attributes.title}</h1>
+          <ParseStaticContent pageContent={article.attributes.content}/>
           <hr className="uk-divider-small" />
           <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
             <div>
