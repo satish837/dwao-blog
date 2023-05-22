@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Moment from "react-moment";
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
+import AppImage from "../../components/image";
 
 const ParseStaticContent = dynamic(() => import('../../components/parse-html'))
 const Layout = dynamic(() => import('../../components/layout'))
@@ -17,6 +18,8 @@ const Article = ({ article, categories }) => {
     article: true,
   };
 
+  console.log(article.attributes.author.data.attributes.picture);
+
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
@@ -24,7 +27,8 @@ const Article = ({ article, categories }) => {
         <div className="absolute inset-0 h-auto z-10">
           {
              // eslint-disable-next-line @next/next/no-img-element
-             <img src={imageUrl} alt="" className="h-full w-full object-fit-cover"/>
+            //  <img src={imageUrl} alt="" className="h-full w-full object-fit-cover"/>
+           !!imageUrl && <AppImage image={article.attributes.image}  className="h-full w-full object-fit-cover"/>
           }
         </div>
       </section>
@@ -37,17 +41,8 @@ const Article = ({ article, categories }) => {
             <div>
               {article.attributes.author.data.attributes.picture && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={getStrapiMedia(
-                    article.attributes.author.data.attributes.picture
-                  )}
-                  alt="Author"
-                  style={{
-                    position: "static",
-                    borderRadius: "20%",
-                    height: 60,
-                  }}
-                />
+                <AppImage image={article.attributes.author.data.attributes.picture}/>
+               
               )}
             </div>
             <div className="uk-width-expand">
