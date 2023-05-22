@@ -8,6 +8,7 @@ const Seo = dynamic(() => import('../components/seo'))
 
 
 const Home = ({ articles, categories, homepage }) => {
+  console.log(articles, categories, homepage );
   return (
     <Layout categories={categories}>
       <Seo seo={homepage.attributes.seo} />
