@@ -18,8 +18,6 @@ const Article = ({ article, categories }) => {
     article: true,
   };
 
-  console.log(article.attributes.author.data.attributes.picture);
-
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
@@ -63,10 +61,6 @@ const Article = ({ article, categories }) => {
 };
 
 export async function getServerSideProps({ res, params }) {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
   const articlesRes = await fetchAPI("/articles", {
     filters: {
       slug: params.slug,
