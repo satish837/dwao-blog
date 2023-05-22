@@ -10,6 +10,8 @@ const Image = ({ image }) => {
         height={height}
         src={getStrapiMedia(image)}
         alt={alternativeText || ""}
+        priority={true}
+        blurDataURL="blur"
       />
     );
   } else {
