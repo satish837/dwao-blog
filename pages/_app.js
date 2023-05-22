@@ -2,11 +2,11 @@ import { createContext } from "react";
 import NextNProgress from 'nextjs-progressbar';
 import App from "next/app";
 import Head from "next/head";
+import { fetchAPI } from "../lib/api";
+import { getStrapiMedia } from "../lib/media";
 import "../assets/css/global.css";
 import "../assets/css/normalize.css";
 import "../assets/css/styles.css";
-import { fetchAPI } from "../lib/api";
-import { getStrapiMedia } from "../lib/media";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});

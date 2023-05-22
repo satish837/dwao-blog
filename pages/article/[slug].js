@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import Moment from "react-moment";
-import Seo from "../../components/seo";
-import Layout from "../../components/layout";
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
-import ParseStaticContent from "../../components/parse-html";
+
+const ParseStaticContent = dynamic(() => import('../../components/parse-html'))
+const Layout = dynamic(() => import('../../components/layout'))
+const Seo = dynamic(() => import('../../components/seo'))
 
 const Article = ({ article, categories }) => {
   const imageUrl = getStrapiMedia(article.attributes.image);
@@ -14,8 +16,6 @@ const Article = ({ article, categories }) => {
     shareImage: article.attributes.image,
     article: true,
   };
-
-  console.log(imageUrl);
 
   return (
     <Layout categories={categories.data}>
@@ -67,7 +67,11 @@ const Article = ({ article, categories }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ res, params }) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
   const articlesRes = await fetchAPI("/articles", {
     filters: {
       slug: params.slug,

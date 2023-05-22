@@ -1,8 +1,9 @@
-import Seo from "../../components/seo";
-import Layout from "../../components/layout";
-import Articles from "../../components/articles";
-
+import dynamic from "next/dynamic";
 import { fetchAPI } from "../../lib/api";
+
+const Articles = dynamic(() => import('../../components/articles'))
+const Layout = dynamic(() => import('../../components/layout'))
+const Seo = dynamic(() => import('../../components/seo'))
 
 const Category = ({ category, categories }) => {
   const seo = {
@@ -23,7 +24,11 @@ const Category = ({ category, categories }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ res, params }) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
   const matchingCategories = await fetchAPI("/categories", {
     filters: { slug: params.slug },
     populate: {
